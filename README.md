@@ -63,7 +63,7 @@ var states = [
 
 ```
 3. initialize the state <br />
-``var zombie = Vudu.start(states);  //the initial state would be set to a Zombie idle state``
+``var zombie = new Vudu.start(states);  //the initial state would be set to a Zombie idle state``
 
 4. Run an event that have been declared in ``states`` <br/>
     ``zombie.event('closerToPrey');`` <br />
