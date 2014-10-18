@@ -1,7 +1,7 @@
 VuduStates
 ==========
 
-Vudu is a simple finite state machine to be used in event driven applications or in HTML5 games AI. 
+Vudu is a simple finite state machine to be used in event driven applications or for game character behavior AI in HTML5 games. 
 
 
 How to use:
@@ -15,7 +15,7 @@ How to use:
 var states = [
     {
         'name': 'idle',
-            'initial': true, //play the idle animation
+            'initial': true,
         'events': {
             'walkTowardPrey': 'walk',
                 'closerToPrey': 'attack', // switch to attack state when prey is close
