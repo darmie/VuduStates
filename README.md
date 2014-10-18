@@ -10,11 +10,7 @@ How to use:
 ============
 
 1. put 
-<code>
-    <script src="VuduStateMachine.js"></script>
-</code> 
-at the header of your html page.
-
+```<script src="VuduStateMachine.js"></script></code>`` at the header of your html page.
 2. Create a state structure that will work with Vudu. 
     example:
     
