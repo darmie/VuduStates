@@ -4,34 +4,53 @@
 
 
 
-	var Vudu = (function(){
+var Vudu = (function(){
+var vudu;
+var returnEval = function (str) {
+    return function () { eval(str); }
+}
+var vuduInstance = function(s){
+        this.stateMap = s;
+        this.indexes = {};
+        this.currentState;
+    var initState = function(){
+        if (this.stateMap) {
+        for (var i = 0; i < this.stateMap.length; i++) {
+            this.indexes[this.stateMap[i].name] = i;
+            if (this.stateMap[i].initial) {
+                this.currentState = this.stateMap[i];
+                
+            }
+        }
 
-		this.stateMap;
-		this.indexes = {};
+        }
+    };
+    initState();
+    var newState;
+   var event = function(e){
+        if (this.currentState.events[e]) {
+            this.currentState = this.stateMap[this.indexes[this.currentState.events[e]]];
+            newState = this.currentState.name;
+            return this.currentState.action;
 
-		this.initState = function(states){
-			this.stateMap = states;
-		}
-		if(stateMap){
-			for(var i = 0; i<this.stateMap.length; i++){
-				this.indexes[this.stateMap[i].name] = i; 
-				if(this.stateMap[i].initial){
-					this.currentState = this.stateMap[i];
-				}
-			}
+        }
+    };
 
-		}
+    var state = function(){ return newState};
 
-		this.event = function(e){
-			if(this.currentState.events[e]){
-				this.currentState = this.stateMap[this.indexes[this.currentState.events[e]]];
-				return this.currentState.action(), Vudu.log();
-
-			}
-		}	
-
-		this.log = function(){
-			console.log("Executing State "+this.currentState.name);
-		}
-
-	})();
+    return {
+                        state: state,
+                        event: function(e){
+                            return event(e);
+                        }                      
+                    };
+}
+return { start: function(s){
+    var nowState = s;
+    if(!vudu){
+        vudu = vuduInstance(nowState); 
+    }
+    return vudu;
+    }
+}
+})();
