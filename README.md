@@ -67,8 +67,8 @@ var states = [
 
 4. Run an event that have been declared in ``states`` <br/>
     ``zombie.event('closerToPrey');`` <br />
-this event will swicth to the current state to 'attack'
-
+this event will swicth the current state  from 'idle' to 'attack'
+ 
 5. You confirm which state is running in your javascript console with: <br />
 ``zombie.state();`` 
 this will return the name of the current state, so you can use it in your conditionals
