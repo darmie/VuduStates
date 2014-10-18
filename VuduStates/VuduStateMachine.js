@@ -1,7 +1,7 @@
 //Vudu Finite State Machine
 //Finite state machines are very useful in software development, they are mostly used in Gaming, Networking or applications that rely heavily on events.
 //@author Damilare Darmie Akinlaja
-
+///////////////////////////////
 
 
 var Vudu = (function(){
@@ -53,4 +53,5 @@ return { start: function(s){
     return vudu;
     }
 }
+
 })();
